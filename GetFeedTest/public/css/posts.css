@@ -1,0 +1,54 @@
+.gplus {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: $white;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.gplus h3 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.gplus a {
+    color: #000;
+}
+.gplus p {
+    color: #000;
+}
+.gplus .athr {
+    overflow: auto;
+    margin-bottom: 5px;
+}
+.gplus .athr a {
+    font-weight: bold;
+    color: #000;
+}
+.gplus .athr a:hover {
+    text-decoration: underline;
+}
+.gplus .athr .name {
+    text-decoration: underline;
+}
+.gplus .athr img {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+}
+.gplus .athr img, .gplus .athr .name {
+    float: left;
+    vertical-align: top;
+}
+.gplus .athr .username {
+    font-weight: normal;
+    color:#888;
+}
+.gplus .athr .time {
+    float: right;
+}
+.gplus .posts .itm {
+    margin-bottom: 10px;
+}
+.gplus .posts .cntnt {
+    clear: both;
+}
+
