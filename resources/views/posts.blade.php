@@ -36,12 +36,25 @@
                                 <h3 class="masthead-brand">Get timeline</h3>
 
                                 <ul class="nav masthead-nav masthead-left">
+                                    <!-- Facebook button -->
                                     <li><button id="fb-btn" class="btn btn-default" onclick="getFacebookFeed()">Get facebook posts!</button></li>
-                                    
+
+                                    <!-- Twitter button -->
                                     <li><button id="twttr-btn" class="btn btn-default" onclick="loginTwitter()">Get tweets!</button></li>
                                     
+                                    <!-- Vkontakte button -->
                                     <li><button id="vk-btn" class="btn btn-default" onclick="vkLoginAndGetFeed()">Get vk feed!</button></li>
                                     
+                                    <!-- 
+                                      -  Goggle+ button
+                                      - 
+                                      -  *****IMPORTANT NOTICE!*****
+                                      -  
+                                      -  After reloading page you should login to Google+ again in order
+                                      -  to view user's timeline. This is in a development mode.
+                                      -  Sorry for temporary inconvinience.
+                                      - 
+                                    -->
                                     <li class="dropdown">
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Google+
@@ -55,6 +68,7 @@
                                     
                                     <li></li>
 
+                                    <!-- Logout button -->
                                     <li class="dropdown">
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ Auth::user()->email }}
@@ -69,21 +83,12 @@
                         </div>    
 
                         <div class="inner cover">
-                            <div style="width:50%; height:50%; float:left; text-align:center">
-                                @for ($i = 0; $i < 5; $i++)  
-                                    <div id="fb_post_{{ $i }}" class="col-xs-4 col-xs-offset-4"></div>
-                                    <div id="fb_post_time_{{ $i }}" class="col-xs-4 col-xs-offset-10"></div>
-                                @endfor       
-                            </div>
+                            
+                            <!-- For Facebook and Vkontakte posts -->
+                            <div class="posts col-xs-4 col-xs-offset-3" style="text-align:center"></div>
 
-                            <div style="width:50%; height:50%; float:right; text-align:center">
-                                @for ($i = 1; $i < 6; $i++)
-                                    <div id="vk_post_{{ $i }}" class="col-xs-4 col-xs-offset-4"></div>
-                                    <div id="vk_post_time_{{ $i }}" class="col-xs-4 col-xs-offset-10"></div>
-                                @endfor
-                            </div>
-
-                            <div style="width:50%; height:50%; float:left; text-align:center">
+                            <!-- For Twitter timeline -->
+                            <div class="twttr" style="text-align:center">
                                 @if(Session::has('twitter_id'))
                                     <a class="twitter-timeline" id="twttr-timeline"
                                         href="https://twitter.com/intent/user?user_id={{ Session::get('twitter_id') }}" 
@@ -93,7 +98,8 @@
                                 @endif
                             </div>
 
-                            <div style="width:50%; height:50%; float:right; text-align:center">
+                            <!-- For Google+ timeline -->
+                            <div style="text-align:center; width:650px" class="col-xs-offset-3">
                                 <div class="gplus"></div>
                             </div>
                         </div>

@@ -1,7 +1,12 @@
     /**
-    *
-    * Twitter related functions.
-    *            
+    |--------------------------------------------------------------------------
+    | Twitter related functions.
+    |--------------------------------------------------------------------------             
+    */
+
+    /**
+    * Asynchronous Facebook API initialization.
+    * 
     */
     window.twttr = (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
@@ -31,6 +36,10 @@
         }
     }(document,"script","twitter-wjs");
 
+    /**
+    * Login.
+    * 
+    */
     function loginTwitter() {
         window.location = "http://localhost:8000/posts/twitter";
     }

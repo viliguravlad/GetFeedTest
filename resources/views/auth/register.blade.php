@@ -14,6 +14,7 @@
     </head>
 
     <body>
+        <!-- If there are some errors during registration -->
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -25,8 +26,9 @@
             </div>
         @endif
 
+        <!-- Registration form -->
         <div class="container">          
-            <form class="form-signin" role="form" method="POST" action="/auth/refister">
+            <form class="form-signin" role="form" method="POST" action="/auth/register">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <h2 class="form-signin-heading">Registration</h2>
                 <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Your Full Name">

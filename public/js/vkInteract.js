@@ -1,9 +1,20 @@
+    /**
+    |--------------------------------------------------------------------------
+    | Vkontakte related functions.
+    |--------------------------------------------------------------------------            
+    */ 
 
+    /**
+    *
+    * Login and get user's wall posts.
+    *
+    */
     function vkLoginAndGetFeed () {
         VK.init({
             apiId: 5002870 
         });
 
+        /* Login */
         VK.Auth.login(function(response) {
             if (response.session) {
                 updateDatabase('vk', response.session.mid);
@@ -15,31 +26,34 @@
             }
         }, 8194);
 
+        /* Get user's wall posts */
         VK.Api.call('wall.get', {settings:8194}, function(data) {
             if(data.response) {
-                for(var i = 1; i < 6; i++) {
-                    document.getElementById('vk_post_' + i).innerHTML = "Message: " + data.response[i].text;
-                    document.getElementById('vk_post_time_' + i).innerHTML = "Time: " + formatTime(data.response[i].date) + "<br><br>";
+                //console.log(data.response);
+                var html = '';
+                $('.posts').html(html);
+                $('.twttr').html(html);
+                $('.gplus').html(html);
+                $('.gplus').css("background-color", "#333");
+                
+                html += '<table class="table table-bordered header-fixed" data-toggle="table" data-height="299" border=' + '1' + '>';
+                html += '<thead>';
+                html += '<tr>';
+                html += '<th><div style="width: 500px">Vkontakte posts</div></th>';
+                html += '<th><div style="width: 150px">Time created</div></th>';
+                html += '</tr>';
+                html += '</thead>';
+                html += '<tbody>';
+
+                for(var i = 1; i < 9; i++) {
+                    html += '<tr>';
+                    html +=     '<td><div style="width: 500px">' + data.response[i].text + '</div></td>';
+                    html +=     '<td><div style="width: 150px">' + _timeSince(new Date(data.response[i].date * 1000)) + ' ago</div><br><br></td>';
+                    html += '</tr>';
                 }
+                html += '</tbody>';
+                html += '</table>';
+                $('.posts').html(html);
             }
         });
     }
-
-    function formatTime (unix_timestamp) {
-        var date = new Date(unix_timestamp * 1000);
-        var hours = date.getHours();
-        var minutes = "0" + date.getMinutes();
-        var seconds = "0" + date.getSeconds();
-        var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-        return formattedTime;
-    }
-
-    /*function vkLogout() {
-      VK.Auth.logout(function(response) {
-        console.log(response);
-        console.log('Logged out!');
-      });
-
-      document.getElementById('vk-logout-btn').hidden = true;
-      document.getElementById('vk-btn').hidden = false;
-    }*/

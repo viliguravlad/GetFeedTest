@@ -7,7 +7,7 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Facebook feed</title>
+            <title>Facebook posts</title>
 
             <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
             <link href="{{ asset('css/cover.css') }}" rel="stylesheet">
@@ -17,6 +17,7 @@
         <body>
             <meta name="csrf-token" content="{!! Session::token() !!}">
 
+            <script src="{{ asset('js/updateDB.js') }}"></script>
             <script src="{{ asset('js/updateDB.js') }}"></script>
             <script src="{{ asset('js/fbInteract.js') }}"></script>
             

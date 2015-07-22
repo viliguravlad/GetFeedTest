@@ -1,7 +1,7 @@
 .gplus {
     margin-bottom: 20px;
     padding: 10px;
-    background-color: $white;
+    background-color: #333;
     -webkit-border-radius: 3px;
     border-radius: 3px;
 }
@@ -10,10 +10,10 @@
     margin-bottom: 15px;
 }
 .gplus a {
-    color: #000;
+    color: #000000;
 }
 .gplus p {
-    color: #000;
+    color: #000000;
 }
 .gplus .athr {
     overflow: auto;
@@ -21,7 +21,7 @@
 }
 .gplus .athr a {
     font-weight: bold;
-    color: #000;
+    color: #000000;
 }
 .gplus .athr a:hover {
     text-decoration: underline;
@@ -40,7 +40,7 @@
 }
 .gplus .athr .username {
     font-weight: normal;
-    color:#888;
+    color:#777;
 }
 .gplus .athr .time {
     float: right;
@@ -51,4 +51,13 @@
 .gplus .posts .cntnt {
     clear: both;
 }
+.time {
+    color: #333;
+}
 
+hr {
+    border: none; /* Убираем границу для браузера Firefox */
+    color: red; /* Цвет линии для остальных браузеров */
+    background-color: #333; /* Цвет линии для браузера Firefox и Opera */
+    height: 2px; /* Толщина линии */
+}

@@ -14,9 +14,10 @@
     </head>
 
     <body>
-    	@if (count($errors) > 0)
+    	<!-- If there are some errors during authorization -->
+        @if (count($errors) > 0)
 		  <div class="alert alert-danger">
-		    <strong>Ошибка!</strong>
+		    <strong>Error!</strong>
 		    There are some problems with your input.<br><br>
 		    <ul>
 		      @foreach ($errors->all() as $error)
@@ -26,11 +27,13 @@
 		  </div>
 		@endif
 
+        <!-- Show if user hasn't been logged in -->
         @if(Session::has('failedLoginMessage'))
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <p class="alert alert-success">{{ Session::get('failedLoginMessage') }}</p>
         @endif
 		
+        <!-- Authorization form -->
 		<div class="container">          
             <form class="form-signin" role="form" method="post" action="/auth/login">
             	<input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -18,8 +18,7 @@ class AuthController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
+    | authentication of existing users.
     |
     */
 
@@ -72,6 +71,12 @@ class AuthController extends Controller
         return $user;
     }
 
+    /**
+     * Redirect user after he verifies his account from email.
+     *
+     * @param  string  $confirmation_code
+     * @return redirect()
+     */
     protected function verify($confirmation_code) {
         if( ! $confirmation_code)
         {
@@ -96,6 +101,13 @@ class AuthController extends Controller
         return redirect('posts');
     }
 
+    /**
+     * Handle POST request to "/auth/login" and decide where to 
+     * redirect user whether he is logged in or not.
+     *
+     * @param  Request  $request
+     * @return redirect()
+     */
     public function postLogin(Request $request)
     {
         $this->validate($request, [
@@ -122,7 +134,12 @@ class AuthController extends Controller
                 'email' => $this->getFailedLoginMessage(),
             ]);
     }
-
+    /**
+     * Handle POST request to "/auth/register" and decide what to do with him after registration.
+     *
+     * @param  Request  $request
+     * @return redirect()
+     */
     public function postRegister(Request $request)
     {
         $validator = $this->validator($request->all());
